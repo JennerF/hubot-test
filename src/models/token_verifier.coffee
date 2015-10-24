@@ -6,7 +6,7 @@ ApiConfig = require(Path.join(__dirname, "api_config")).ApiConfig
 class TokenVerifier
   constructor: (token) ->
     @token = token.trim()
-    api_config = ApiConfig()
+    api_config = ApiConfig(@token)
     @api   = Octonode.client(@token, { hostname: api_config().hostname })
 
   valid: (cb) ->
