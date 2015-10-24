@@ -1,13 +1,13 @@
-Path      = require "path"
 Octonode  = require "octonode"
-ApiConfig = require(Path.join(__dirname, "api_config")).ApiConfig
+Url  = require "url"
 ###########################################################################
 
 class TokenVerifier
   constructor: (token) ->
     @token = token.trim()
-    api_config = ApiConfig(@token)
-    @api   = Octonode.client(@token, { hostname: api_config().hostname })
+    api_uri = (process.env.HUBOT_GITHUB_API or 'https://api.github.com')
+    parsed_api_uri = Url.parse(api_uri)
+    @api   = Octonode.client(@token, { hostname: parsed_api_uri.host })
 
   valid: (cb) ->
     @api.get "/user", (err, data, headers) ->
