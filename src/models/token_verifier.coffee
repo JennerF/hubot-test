@@ -19,10 +19,10 @@ class TokenVerifier
       console.log scopes
       if scopes
         if scopes.indexOf('repo') >= 0
-	  console.log "repo"
+          console.log "repo"
           cb(true)
         else if scopes.indexOf('repo_deployment') >= 0
-	  console.log "repo_deployment"
+          console.log "repo_deployment"
           cb(true)
         else
           console.log "scopes, but not right ones"
