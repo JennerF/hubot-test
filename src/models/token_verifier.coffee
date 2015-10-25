@@ -5,7 +5,7 @@ Url  = require "url"
 class TokenVerifier
   constructor: (token) ->
     @token = token.trim()
-    api_uri = process.env.HUBOT_GITHUB_API or 'api.github.com'
+    api_uri = process.env.HUBOT_GITHUB_API_URI or 'api.github.com'
     @api   = Octonode.client(@token, { hostname: api_uri })
 
   valid: (cb) ->
