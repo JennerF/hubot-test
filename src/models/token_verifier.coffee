@@ -10,7 +10,7 @@ class TokenVerifier
     @api   = Octonode.client(@token, { hostname: api_uri })
 
   valid: (cb) ->
-    @api.get "/user", (err, data, headers) ->
+    @api.get "/user", (err, data, body, headers) ->
       console.log err
       console.log data
       console.log headers
