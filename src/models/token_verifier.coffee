@@ -8,7 +8,6 @@ class TokenVerifier
     api_uri = (process.env.HUBOT_GITHUB_API or 'https://api.github.com')
     console.log api_uri
     @api   = Octonode.client(@token, { hostname: api_uri })
-    @api.requestDefaults.headers['Accept'] = 'application/vnd.github.cannonball-preview+json'
 
   valid: (cb) ->
     @api.get "/user", (err, data, headers) ->
