@@ -88,6 +88,10 @@ module.exports = (robot) ->
     unless deployment.isValidApp()
       msg.reply "#{name}? Never heard of it."
       return
+    unless ref.match /^[a-z0-9][a-z0-9-]{0,254}$/i
+      # TODO: Relax this constraint.
+      msg.reply "Unfortunately, we can only currently deploy branch names comprised of letters, digits, and hyphens; #{ref} does not match this pattern. Please rename your branch and try again."
+      return
     unless deployment.isValidEnv()
       msg.reply "#{name} doesn't seem to have an #{env} environment."
       return
