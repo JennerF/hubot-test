@@ -103,7 +103,7 @@ module.exports = (robot) ->
     if user?.githubDeployToken?
       deployment.setUserToken(user.githubDeployToken)
 
-    deployment.user   = user.id
+    deployment.user   = if user?.githubLogin? then user.githubLogin else user.id
     deployment.room   = msg.message.user.room
 
     if robot.adapterName is "flowdock"
