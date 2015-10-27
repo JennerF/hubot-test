@@ -142,6 +142,8 @@ class Deployment
           message = "Unable to create deployments for #{repository}. Check your scopes for this token."
         else
           message = bodyMessage
+      else if success
+        message = "OK, requested deploy of #{repository}/#{ref} to #{env}."
 
       cb message
 
